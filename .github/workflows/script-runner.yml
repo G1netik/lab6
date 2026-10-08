@@ -1,0 +1,22 @@
+name: Script Runner
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Give permission
+        run: chmod +x scripts/build.sh
+
+      - name: Run script
+        run: ./scripts/build.sh
+
+      - name: Show result
+        run: cat build_info.txt
