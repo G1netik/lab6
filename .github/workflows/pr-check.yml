@@ -15,5 +15,6 @@ jobs:
         run: test -f README.md
 
       - name: Error
-        if: failure()
-        run: echo "Ошибка: README.md не найден!"
+        if: ${{ failure() }}
+        run: |
+          echo "Ошибка: README.md не найден!"
