@@ -1,0 +1,19 @@
+name: Pull Request Check
+
+on:
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Check README
+        run: test -f README.md
+
+      - name: Error
+        if: failure()
+        run: echo "Ошибка: README.md не найден!"
